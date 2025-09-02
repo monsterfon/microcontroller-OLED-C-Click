@@ -18,6 +18,25 @@ This project creates a real-time audio visualizer on a Raspberry Pi 3B using an 
 - **Speakers**
 - **SSH connection** from development machine to Raspberry Pi
 
+
+
+## Wiring
+
+Connect the OLED C Click display to the Raspberry Pi using SPI:
+
+- **SPI Pins:**
+    - `SCK` (Clock): Connect to Raspberry Pi SCK (GPIO 11)
+    - `MOSI`: Connect to Raspberry Pi MOSI (GPIO 10)
+- **Control Pins:**
+    - `CS` (Chip Select): Connect to GPIO 17
+    - `DC` (Data/Command): Connect to GPIO 25
+    - `RST` (Reset): Connect to GPIO 24
+- **Enable Pin:** Connect to 3.3V to power the display
+- **Power:** Connect VCC to 3.3V
+- **Ground:** Connect GND to Raspberry Pi GND
+
+
+
 ## Installation
 
 **Update your Raspberry Pi:**
