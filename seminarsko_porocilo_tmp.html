@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>seminarsko_porocilo.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="seminarsko-poro%C4%8Dilo">Seminarsko poročilo</h1>
+<p><strong>Naslov:</strong> Audio Visualizer z OLED C Click na Raspberry Pi</p>
+<p><strong>Avtor:</strong> Žiga Fon</p>
+<p><strong>Datum:</strong> 1.10.2025</p>
+<hr>
+<h2 id="povzetek">Povzetek</h2>
+<p>V tem seminarskem poročilu predstavim izvedbo realnočasovnega avdio vizualizerja na platformi Raspberry Pi 3B, ki uporablja OLED C Click (PSP27801; 96×96 px) z SSD1351 gonilnikom in USB mikrofonom (Rode NT USB). Sistem zajema avdio signal, ga predvaja skozi zvočnike (loopback) in na zaslon v realnem času prikazuje stolpični vizualizator glasnosti. Namen projekta je prikaz interakcije med strojno opremo (SPI, GPIO) in programsko opremo. Python, knjižnicami za zvočno obdelavo (sounddevice) in risanje na OLED (<strong>adafruit-circuitpython-ssd1351</strong> in <strong>Pillow</strong>).</p>
+<h2 id="vsebina">Vsebina</h2>
+<ol>
+<li>Uvod</li>
+<li>Cilji projekta</li>
+<li>Komponente in tehnične specifikacije</li>
+<li>Napeljava (Wiring)</li>
+<li>Namestitev programske opreme</li>
+<li>Programska rešitev (koda in pojasnilo)</li>
+<li>Rezultati in opazovanja</li>
+<li>Omejitve in možne izboljšave</li>
+<li>Viri in dokumentacija (povezave)</li>
+</ol>
+<hr>
+<h2 id="1-uvod">1. Uvod</h2>
+<p>Audio vizualizator je praktičen primer za učenje zajema podatkov iz zunanjih senzorjev (mikrofon), realnočasovnega procesiranja signalov in grafičnega izhoda na majhne barvne zaslone. Projekt je zasnovan tako, da deluje na &quot;headless&quot; Raspberry Pi OS Lite, kar pomeni, da ni potrebna grafična namestitev X Window ali drugih težkih paketov; vse je narejeno v Pythonu z uporabo knjižnic, ki neposredno komunicirajo s priključenim zaslonom preko SPI.</p>
+<h2 id="2-cilji-projekta">2. Cilji projekta</h2>
+<ul>
+<li>Uporabiti OLED C Click (PSP27801, 96×96) kot prikazovalnik.</li>
+<li>Zajeti avdio iz USB mikrofona in v realnem času izračunati glasnost (RMS).</li>
+<li>Prikazati zadnjih N intervalov glasnosti kot barvne stolpce na zaslonu.</li>
+<li>Predvajati zvok (loopback) na priključene zvočnike.</li>
+</ul>
+<h2 id="3-komponente-in-tehni%C4%8Dne-specifikacije">3. Komponente in tehnične specifikacije</h2>
+<ul>
+<li>
+<p><strong>OLED C Click (MIKROE-1585)</strong></p>
+<ul>
+<li>Panel: PSP27801, 1.12&quot; kvadratni OLED.</li>
+<li>Resolucija: 96 × 96 slikovnih pik; uporablja SSD1351 kot grafični gonilnik.</li>
+<li>Napetost: 3.3 V napajanje za VCC in logiko.</li>
+</ul>
+</li>
+<li>
+<p><strong>Raspberry Pi 3B</strong></p>
+<ul>
+<li>Sistem: Raspberry Pi OS Lite (32-bit)</li>
+<li>SPI vmesnik (uporabljen za komunikacijo z zaslonom)</li>
+</ul>
+</li>
+<li>
+<p><strong>Mikrofon:</strong> Rode NT USB (USB kondenzatorski mikrofon)</p>
+</li>
+<li>
+<p><strong>Zvočniki:</strong> analogni zvočniki, priključeni na Raspberry Pi</p>
+</li>
+<li>
+<p><strong>Glavne programske knjižnice:</strong></p>
+<ul>
+<li><code>python3</code>, <code>numpy</code>, <code>Pillow</code> (PIL) — za grafiko</li>
+<li><code>sounddevice</code> — za zajem in predvajanje zvoka preko PortAudio</li>
+<li><code>adafruit-circuitpython-ssd1351</code> — za upravljanje zaslona SSD1351 preko SPI</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-napeljava-wiring">4. Napeljava (Wiring)</h2>
+<p>Priključitev OLED C Click na Raspberry Pi preko SPI:</p>
+<p><img src="file:///c:/Users/SkeiTolmin/Documents/GitHub/microcontroller-OLED-C-Click/image-1.png" alt="alt text"></p>
+<ul>
+<li>
+<p><strong>SPI Pins:</strong></p>
+<ul>
+<li><strong>SCK (Clock)</strong> → Raspberry Pi SCK (GPIO 11; fizični pin 23). Ta pin pošilja takte, ki usklajujejo prenos podatkov preko SPI.</li>
+<li><strong>MOSI (Master Out Slave In)</strong> → Raspberry Pi MOSI (GPIO 10; fizični pin 19). Po tem pinu Raspberry Pi pošilja podatke v zaslon.</li>
+</ul>
+</li>
+<li>
+<p><strong>Nadzorni pini:</strong></p>
+<ul>
+<li><strong>CS (Chip Select)</strong> → GPIO 17 (fizični pin 11). Aktivira oziroma izbere napravo, s katero trenutno komunicira SPI master (Raspberry Pi). Ko je CS v logičnem stanju LOW, zaslon prejema podatke.</li>
+<li><strong>DC (Data/Command)</strong> → GPIO 25 (fizični pin 22). Določa, ali se pošilja ukaz (Command) ali podatki (Data). Pri LOW je to ukaz, pri HIGH pa podatki za risanje.</li>
+<li><strong>RST (Reset)</strong> → GPIO 24 (fizični pin 18). Ob inicializaciji zaslona pošiljanje kratkega impulza na RESET pin ponastavi SSD1351 gonilnik.</li>
+</ul>
+</li>
+<li>
+<p><strong>Napajanje in zemlja:</strong></p>
+<ul>
+<li><strong>VCC</strong> → 3.3V. Napajanje celotnega OLED modula.</li>
+<li><strong>GND</strong> → GND. Skupna masa.</li>
+<li><strong>ENABLE → 3.3V (GND pomeni izklop). Omogoča ali onemogoča napajanje vezja OLED.</strong></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>POZOR: Raspberry privzeto uporablja GPIO 7 ali 8 za Chip select a ssd1351.SSD1351 ne sprejema teh pinov, zato mora biti uporabljen eden od običajnih digitalnih GPIO.</p>
+</blockquote>
+<h2 id="5-namestitev-programske-opreme">5. Namestitev programske opreme</h2>
+<h3 id="posodobitev-sistema">Posodobitev sistema</h3>
+<pre class="hljs"><code><div>sudo apt update
+sudo apt upgrade -y
+</div></code></pre>
+<h3 id="namestitev-paketov">Namestitev paketov</h3>
+<pre class="hljs"><code><div>sudo apt install python3-pip python3-pil python3-numpy python3-smbus git -y
+pip3 install adafruit-circuitpython-ssd1351 sounddevice
+</div></code></pre>
+<h3 id="kloniranje-repozitorija">Kloniranje repozitorija</h3>
+<pre class="hljs"><code><div>git <span class="hljs-built_in">clone</span> https://github.com/yourusername/audio-visualizer-oled.git
+<span class="hljs-built_in">cd</span> audio-visualizer-oled
+</div></code></pre>
+<h3 id="zagon-programa">Zagon programa</h3>
+<pre class="hljs"><code><div>python3 audio-visualizer.py
+</div></code></pre>
+<h2 id="6-programska-re%C5%A1itev">6. Programska rešitev</h2>
+<p>Vključena je Python skripta, ki:</p>
+<ol>
+<li>Inicializira SPI in SSD1351 zaslon preko <code>adafruit_rgb_display.ssd1351</code>.</li>
+<li>Uporabi <code>sounddevice.Stream</code> z callback funkcijo za realnočasovno obdelavo in loopback.</li>
+<li>Izračuna glasnost bloka z RMS ali normirano L2 normo in jo preslika v višino stolpca.</li>
+<li>Na zaslon riše stolpce (barvne pravokotnike) iz zgodovine vrednosti.</li>
+</ol>
+<h3 id="celotna-koda">Celotna koda:</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># (koda je priložena) - spodaj je izsek iz projekta</span>
+<span class="hljs-keyword">import</span> time, random
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> sounddevice <span class="hljs-keyword">as</span> sd
+<span class="hljs-keyword">import</span> board, busio, digitalio
+<span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image, ImageDraw
+<span class="hljs-keyword">import</span> adafruit_rgb_display.ssd1351 <span class="hljs-keyword">as</span> ssd1351
+
+<span class="hljs-comment"># --------- Config ---------</span>
+WIDTH, HEIGHT = <span class="hljs-number">128</span>, <span class="hljs-number">128</span>   <span class="hljs-comment"># Full SSD1351 resolution</span>
+BAR_WIDTH     = <span class="hljs-number">4</span>          <span class="hljs-comment"># pixel width of each bar</span>
+FPS           = <span class="hljs-number">30</span>
+BG_COLOR      = (<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)  <span class="hljs-comment"># black</span>
+BAR_AREA      = <span class="hljs-number">96</span>         <span class="hljs-comment"># bar drawing height (bottom of screen)</span>
+RUN_TIME      = <span class="hljs-number">10</span>         <span class="hljs-comment"># seconds to run</span>
+
+<span class="hljs-comment"># --------- SPI / Display setup ---------</span>
+spi = busio.SPI(clock=board.SCK, MOSI=board.MOSI)
+cs  = digitalio.DigitalInOut(board.D17)
+dc  = digitalio.DigitalInOut(board.D25)
+rst = digitalio.DigitalInOut(board.D24)
+display = ssd1351.SSD1351(spi, cs=cs, dc=dc, rst=rst)
+
+<span class="hljs-comment"># --------- Drawing buffer ---------</span>
+image = Image.new(<span class="hljs-string">"RGB"</span>, (WIDTH, HEIGHT))
+draw  = ImageDraw.Draw(image)
+
+<span class="hljs-comment"># --------- Audio setup ---------</span>
+SAMPLE_RATE = <span class="hljs-number">44100</span>
+BLOCK_SIZE  = <span class="hljs-number">1024</span>
+VU_values = []   <span class="hljs-comment"># history of loudness</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">audio_callback</span><span class="hljs-params">(indata, outdata, frames, time_info, status)</span>:</span>
+    <span class="hljs-keyword">if</span> status:
+        print(status)
+
+    <span class="hljs-comment"># loopback: mic -&gt; speakers</span>
+    outdata[:] = indata
+
+    <span class="hljs-comment"># compute loudness (RMS of current block)</span>
+    volume_norm = np.linalg.norm(indata) / np.sqrt(len(indata))
+    <span class="hljs-comment"># scale to [0..BAR_AREA]</span>
+    loudness = int(min(volume_norm * <span class="hljs-number">10</span>, <span class="hljs-number">1.0</span>) * BAR_AREA)
+
+    <span class="hljs-comment"># append to history</span>
+    VU_values.append(loudness)
+    <span class="hljs-comment"># keep enough bars to fill screen</span>
+    max_bars = WIDTH // BAR_WIDTH
+    <span class="hljs-keyword">if</span> len(VU_values) &gt; max_bars:
+        VU_values.pop(<span class="hljs-number">0</span>)
+
+<span class="hljs-comment"># --------- Main loop ---------</span>
+<span class="hljs-keyword">try</span>:
+    frame_time = <span class="hljs-number">1.0</span> / FPS
+    start = time.time()
+
+    <span class="hljs-keyword">with</span> sd.Stream(channels=<span class="hljs-number">1</span>,
+                   samplerate=SAMPLE_RATE,
+                   blocksize=BLOCK_SIZE,
+                   callback=audio_callback):
+
+        <span class="hljs-keyword">while</span> time.time() - start &lt; RUN_TIME:
+            <span class="hljs-comment"># Clear frame</span>
+            draw.rectangle((<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, WIDTH, HEIGHT), fill=BG_COLOR)
+
+            <span class="hljs-comment"># Draw history bars (left to right)</span>
+            <span class="hljs-keyword">for</span> i, h <span class="hljs-keyword">in</span> enumerate(VU_values):
+                x0 = i * BAR_WIDTH
+                y0 = HEIGHT - h
+                color = (random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">255</span>), random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">255</span>), random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">255</span>))
+                draw.rectangle((x0, y0, x0 + BAR_WIDTH - <span class="hljs-number">1</span>, HEIGHT - <span class="hljs-number">1</span>), fill=color)
+
+            display.image(image)
+            time.sleep(frame_time)
+
+<span class="hljs-keyword">finally</span>:
+    <span class="hljs-comment"># Clear display</span>
+    draw.rectangle((<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, WIDTH, HEIGHT), fill=BG_COLOR)
+    display.image(image)
+
+    <span class="hljs-comment"># Release GPIOs</span>
+    cs.deinit()
+    dc.deinit()
+    rst.deinit()
+    <span class="hljs-keyword">if</span> spi.try_lock():
+        spi.unlock()
+</div></code></pre>
+<h3 id="pojasnilo-klju%C4%8Dnih-delov-kode">Pojasnilo ključnih delov kode</h3>
+<ul>
+<li><code>sounddevice.Stream</code> uporablja callback, ki ga PortAudio kliče za vsako obdelovalno okno — v callbacku je hitro računanje RMS in hkratno kopiranje v izhod (loopback). To zagotavlja nizko latenco predvajanja in zajema.</li>
+</ul>
+<img src="file:///c:/Users/SkeiTolmin/Documents/GitHub/microcontroller-OLED-C-Click/image.png" alt="Diagram poteka kode" width="300">
+<ul>
+<li><strong>Upravljanje energije:</strong> Smarter sleep/wake pri daljših neaktivnostih zaslona.</li>
+</ul>
+<h2 id="9-viri-povezave-do-dokumentov">9. Viri (povezave do dokumentov)</h2>
+<ul>
+<li><a href="https://www.mikroe.com/oled-c-click">https://www.mikroe.com/oled-c-click</a></li>
+<li>SSD1351 datasheet (Solomon Systech): <a href="https://newhavendisplay.com/content/app_notes/SSD1351.pdf">https://newhavendisplay.com/content/app_notes/SSD1351.pdf</a></li>
+<li>Adafruit CircuitPython SSD1351 dokumentacija: <a href="https://docs.circuitpython.org/projects/ssd1351/en/latest/">https://docs.circuitpython.org/projects/ssd1351/en/latest/</a></li>
+<li>python-sounddevice dokumentacija: <a href="https://python-sounddevice.readthedocs.io/">https://python-sounddevice.readthedocs.io/</a></li>
+<li>Raspberry Pi SPI pinout (pinout.xyz): <a href="https://pinout.xyz/pinout/spi">https://pinout.xyz/pinout/spi</a></li>
+</ul>
+<hr>
+
+</body>
+</html>

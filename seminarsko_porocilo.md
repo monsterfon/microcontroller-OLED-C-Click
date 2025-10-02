@@ -64,6 +64,8 @@ Audio vizualizator je praktičen primer za učenje zajema podatkov iz zunanjih s
 
 Priključitev OLED C Click na Raspberry Pi preko SPI:
 
+![alt text](image-1.png)
+
 - **SPI Pins:**
 
   - **SCK (Clock)** → Raspberry Pi SCK (GPIO 11; fizični pin 23). Ta pin pošilja takte, ki usklajujejo prenos podatkov preko SPI.
@@ -112,7 +114,7 @@ cd audio-visualizer-oled
 python3 audio-visualizer.py
 ```
 
-## 6. Programska rešitev (koda in pojasnilo)
+## 6. Programska rešitev 
 
 Vključena je Python skripta, ki:
 
@@ -215,45 +217,12 @@ finally:
 ### Pojasnilo ključnih delov kode
 
 - `sounddevice.Stream` uporablja callback, ki ga PortAudio kliče za vsako obdelovalno okno — v callbacku je hitro računanje RMS in hkratno kopiranje v izhod (loopback). To zagotavlja nizko latenco predvajanja in zajema.
-- `np.linalg.norm(indata) / np.sqrt(len(indata))` je standarden način za izračun RMS/normalizirane amplitude bloka.
-- Zaslon SSD1351 ima fizično resolucijo 96×96 na panelu PSP27801, vendar knjižnice SSD1351 pogosto inicializirajo povsem 128×128 buffer — zato je v kodi uporabljena velikost 128×128 z lastno mapo risanja področja za vidno 96×96 regijo.
 
-### Diagram poteka kode
+<img src="image.png" alt="Diagram poteka kode" width="300"/>
 
-```mermaid
-graph TD
-    A[Zagon programa] --> B[Inicializacija SPI in zaslona]
-    B --> C[Inicializacija audio stream-a]
-    C --> D{Callback funkcija}
-    D -->|Mic -> Speakers| E[Loopback]
-    D -->|Izračun RMS| F[Izračun glasnosti]
-    F --> G[Dodaj glasnost v zgodovino]
-    G --> H[Risanje stolpcev na zaslon]
-    H --> I[Posodobitev OLED slike]
-    I --> D
-    I --> J[Zaključek po RUN_TIME]
-```
-
-## 7. Rezultati in opazovanja
-
-- Vizualizator pravilno prikazuje spremembe glasnosti kot stolpce; višina stolpca korelira z RMS vrednostjo bloka.
-- Barvna paleta je trenutno naključna — za bolj smiselne vizualizacije lahko barve mapiramo glede na frekvenčno vsebino ali raven.
-- Latenca med mikrofonom in zvočniki pri loopbacku je predvsem odvisna od `blocksize` in `samplerate` ter hitrosti obdelave v callbacku.
-
-## 8. Omejitve in možne izboljšave
-
-- **Frekvenčna analiza:** Namesto le RMS uporabimo FFT za frekvenčno spektrogramsko vizualizacijo.
-- **Optimizacija hitrosti:** Uporaba C-ext ali optimiziranih knjižnic za hitrejšo obdelavo pri manjšem `blocksize`.
-- **Kakovost prikaza:** Namesto naključnih barv uporabimo urejeno barvno lestvico in anti-aliasing besedila/oblike.
 - **Upravljanje energije:** Smarter sleep/wake pri daljših neaktivnostih zaslona.
 
-## 9. Stran OLED C Click ("page of the OLED click")
-
-OLED C Click je dokumentiran na strani proizvajalca MikroElektronika, kjer so navedene glavne specifikacije (PSP27801; 96x96), mehanski podatki in skice pinout-a. V poročilu sem uporabil opis in tehnične podatke tega izdelka pri načrtovanju napeljave in inicializacije v kodi.
-
-## 10. Viri (povezave do dokumentov)
-
-Spodaj so povezave do dokumentov in strani, ki sem jih uporabil pri pripravi projekta in tega poročila. Vključil sem uradno stran modula, datoteke z naslovnicami gonilnikov in dokumentacijo knjižnic.
+## 9. Viri (povezave do dokumentov)
 
 - [https://www.mikroe.com/oled-c-click](https://www.mikroe.com/oled-c-click)
 - SSD1351 datasheet (Solomon Systech): [https://newhavendisplay.com/content/app\_notes/SSD1351.pdf](https://newhavendisplay.com/content/app_notes/SSD1351.pdf)
@@ -262,6 +231,3 @@ Spodaj so povezave do dokumentov in strani, ki sem jih uporabil pri pripravi pro
 - Raspberry Pi SPI pinout (pinout.xyz): [https://pinout.xyz/pinout/spi](https://pinout.xyz/pinout/spi)
 
 ---
-
-*Konec poročila.*
-
